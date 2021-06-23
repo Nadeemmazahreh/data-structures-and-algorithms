@@ -2,7 +2,6 @@
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 1 - Review
-
 Write a function that iterates over an array of people objects
 and creates a new list of each person's full name using the array method 'map'.
 Each object will have the shape {firstName:string, lastName:string}
@@ -11,8 +10,13 @@ should convert to ["Jane Doe", "James Bond"]
 Note the space in between first and last names.
 You can assume that neither firstName nor lastName will be blank
 ------------------------------------------------------------------------------------------------ */
-const toLastNames = people => { 
+const toLastNames = people => {
+  // Solution code here...
+  return people.map(element => {
+    return `${element.firstName} ${element.lastName}`
+  })
 };
+
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 2
@@ -67,7 +71,6 @@ const countNumberOfElements = (arr) => {
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 5
-
 Write a function named returnNames that, given the Star Wars data, below, uses reduce to return an array containing the names of the characters.
 ------------------------------------------------------------------------------------------------ */
 
@@ -89,7 +92,8 @@ let starWarsData = [{
   skin_color: 'gold',
   eye_color: 'yellow',
   birth_year: '112BBY',
-  gender: 'n/a'},
+  gender: 'n/a'
+},
 {
   name: 'R2-D2',
   height: '96',
@@ -122,12 +126,12 @@ let starWarsData = [{
 }];
 
 const returnNames = (arr) => {
-  let sum = arr.reduce((acc,val) => {
-    acc = []
-    acc.append(val.name);
-    return acc;
-  },0)
-  return sum;
+  // Solution code here...
+  let newArr = [];
+  arr.reduce((acc, val) => {
+    newArr.push(val.name);
+  }, {})
+  return newArr;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -140,6 +144,21 @@ Note: You must use reduce for this challenge. You may not use the built-in .reve
 
 const reversedString = (str) => {
   // Solution code here...
+
+  // let newArr = str.split('').reduce((acc, letter) => {
+  //   acc = letter + acc;
+  //   return acc;
+  // }, '')
+  // return newArr;
+  let arr = str.split('');
+  let result = [];
+  for (let i = arr.length - 1; i >= 0; i--) {
+    result.push(arr[i]);
+  }
+  return result.reduce((acc, val) => {
+    acc = acc + val;
+    return acc;
+  }, '')
 };
 
 /* ------------------------------------------------------------------------------------------------
