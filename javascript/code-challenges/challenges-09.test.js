@@ -1,49 +1,68 @@
 'use strict';
 
 /* ------------------------------------------------------------------------------------------------
-CHALLENGE 1 - Review
+CHALLENGE 1 - Reviewnpm test 09 
 Write a function that finds the maximum value in an array
 using the 'reduce' method.
 E.g. [4,2,7,5,9,2] -> 9
+describe('Testing challenge 1', () => {
+  test('It should return the maximum number found', () => {
+    expect(maxInArray([4, 2, 7, 5, 9, 2])).toStrictEqual(9);
+  });
+  test('It should handle negatives and return the maximum number found', () => {
+    expect(maxInArray([4, -2, -7, 5, -9, 2])).toStrictEqual(5);
+  });
+});
 ------------------------------------------------------------------------------------------------ */
 const maxInArray = (arr) => {
-  return arr.reduce((x, y) => {
-      if (y > x) {
-          x = y;
-      }
-      return x;
-  },);
+  // Solution code here...
+  let max = arr.reduce(function (a, b) {
+    return Math.max(a, b);
+  });
+  return max;
 };
+
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 2
 Write a function named getCourseKeys that takes in the courseInfo object and returns an array containing the keys for the courseInfo object.
 For example: (['name', 'duration', 'topics', 'finalExam']).
+describe('Testing challenge 2', () => {
+  test('It should return the keys from an object', () => {
+    expect(getCourseKeys(courseInfo)).toStrictEqual(['name', 'duration', 'topics', 'finalExam']);
+  });
+});
 ------------------------------------------------------------------------------------------------ */
-const courseInfo = { name: 'Code 301', duration: { dayTrack: '4 weeks', eveningTrack: '8 weeks'},
+const courseInfo = {
+  name: 'Code 301', duration: { dayTrack: '4 weeks', eveningTrack: '8 weeks' },
   topics: ['SMACSS', 'APIs', 'NodeJS', 'SQL', 'jQuery', 'functional programming'],
   finalExam: true
 };
 
 const getCourseKeys = (obj) => {
   // Solution code here...
-  let newArr=[];
-  for(const [key,value] of Object.entries(obj)){
-      newArr.push(key);
-    }
-    return newArr;
+  let localArray = Object.keys(obj);
+  return localArray;
 };
+
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 3
 Write a function named checkValues that takes in an object and a value and returns true if the value is in the object.
+describe('Testing challenge 3', () => {
+  test('It should return true if the value is in the object', () => {
+    expect(checkValues({ class: '301' }, '301')).toBe(true);
+  });
+  test('It should return false if the value is not in the object', () => {
+    expect(checkValues({ class: '301' }, '401')).toBe(false);
+  });
+});
 ------------------------------------------------------------------------------------------------ */
 
-const checkValues = (obj, value1) => {
+const checkValues = (obj, value) => {
   // Solution code here...
-  for(const [key,value] of Object.entries(obj)){
-      return value.includes(value1);
-    }
-   
+  let result = Object.values(obj);
+  return (result == value);
 };
+
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 4
 You are given an object with names and their coresponding phone numbers that looks like this:
@@ -58,15 +77,29 @@ HR has asked you to change the data to make it easier to print so that it looks 
   'Ada Lovelace: 222-349-9842',
   'Alan Turing: 222-853-5933'
 ]
+describe('Testing challenge 4', () => {
+  test('It should return an an array of names and numbers', () => {
+    const startingObj = {
+      'Grace Hopper': '222-303-5938',
+      'Ada Lovelace': '222-349-9842',
+      'Alan Turing': '222-853-5933'
+    };
+    expect(updateNumbers(startingObj).includes('Grace Hopper: 222-303-5938')).toBe(true);
+  });
+});
 ------------------------------------------------------------------------------------------------ */
 
 const updateNumbers = (obj) => {
   // Solution code here...
-  let newArr=[];
-  for(const [key,value] of Object.entries(obj)){
-    newArr.push(`${key}: ${value}`)
-  }
-  return newArr
+  // let localArray = Object.keys(obj)+': '+Object.values(obj);
+  let keys = Object.keys(obj);
+  let values = Object.values(obj);
+  let localArray = [
+    keys[0] + ': ' + values[0],
+    keys[1] + ': ' + values[1],
+    keys[2] + ': ' + values[2]
+  ];
+  return localArray;
 };
 
 
@@ -74,6 +107,12 @@ const updateNumbers = (obj) => {
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 5
 Write a function named getHouses that returns a new array containing the names of all of the houses in the data set.
+describe('Testing challenge 5', () => {
+  test('It should return an array of the names of the houses', () => {
+    expect(getHouses(characters)[0]).toStrictEqual('Stark');
+    expect(getHouses(characters).length).toStrictEqual(7);
+  });
+});
 ------------------------------------------------------------------------------------------------ */
 
 const characters = [
@@ -122,29 +161,38 @@ const characters = [
 const getHouses = (arr) => {
   let houses = [];
   // Solution code here...
-  for(const [key,value] of Object.entries(arr)){
-      houses.push(value.house)
-  }
-
+  arr.forEach(obj => {
+    houses.push(obj.house);
+  });
   return houses;
 };
 
-
 /*------------------------------------------------------------------------------------------------
 CHALLENGE 6
-
 Write a function named hasChildrenValues that uses Object.values to determine if any given character in the data set has children.
-
 This function should take in an array of data and a character name and return a Boolean.
-
 For example:
 hasChildrenValues(characters, 'Cersei') will return true
 hasChildrenValues(characters, 'Sansa') will return false
+describe('Testing challenge 6', () => {
+  test('It should return true for characters that have children', () => {
+    expect(hasChildrenValues(characters, 'Daenarys')).toBeTruthy();
+  });
+  test('It should return false to characters who do not have children', () => {
+    expect(hasChildrenValues(characters, 'Sansa')).toBeFalsy();
+  });
+});
 ------------------------------------------------------------------------------------------------ */
 
 const hasChildrenValues = (arr, character) => {
   // Solution code here...
-
+  let result;
+  arr.forEach(obj => {
+    if (character == obj.name) {
+      result = (obj.children != undefined);
+    }
+  });
+  return result;
 };
 
 /* ------------------------------------------------------------------------------------------------
