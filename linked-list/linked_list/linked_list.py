@@ -27,7 +27,17 @@ class LinkedList:
         string = "Value present"
         break
 
-    print(string)
+    return string
+
+  def append(self,value):
+
+      node = Node(value)
+      current = self.head
+        
+      while current.next:
+          current = current.next
+      current.next = node
+
 
 
 

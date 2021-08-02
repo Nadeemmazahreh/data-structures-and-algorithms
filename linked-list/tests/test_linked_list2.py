@@ -6,4 +6,5 @@ def test_linked_listt():
   assert LinkedList()
 
 def test_create_node():
-  assert Node()
+  node = Node(2)
+  assert node
