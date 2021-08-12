@@ -33,12 +33,26 @@ class LinkedList:
 
       node = Node(value)
       current = self.head
-        
+
       while current.next:
           current = current.next
       current.next = node
 
+  # def insert_before(self,old_value,value):
+  #   node=Node(value)
+  #   current=self.head
+  #   temp=self.head
 
+  #   if current.value==old_value:
+  #     self.insert(value)
+  #     return
+
+  #   while(current.next.value!= old_value):
+  #     current=current.next
+
+  #   temp = current.next
+  #   current.next=node
+  #   node.next = temp
 
 
   def __str__(self):
