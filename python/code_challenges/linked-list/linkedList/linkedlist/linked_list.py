@@ -105,8 +105,7 @@ ll = LinkedList()
 ll.head = Node(1)
 ll.head.next = Node(2)
 ll.head.next.next= Node(3)
-ll.append(10)
-print(ll.head.next.next.next.value)
+print(ll.kth_from_end(0))
 
 
 
