@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "linked-list"
+name = "linkedList"
 version = "0.1.0"
 description = ""
 authors = ["Nadeemmazahreh <nadeemmazahreh97@hotmail.com>"]
