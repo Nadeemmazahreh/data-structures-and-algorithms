@@ -101,11 +101,45 @@ class LinkedList:
             raise Exception('k is greater than the length of the linked list')
 
 
-ll = LinkedList()
-ll.head = Node(1)
-ll.head.next = Node(2)
-ll.head.next.next= Node(3)
-print(ll.kth_from_end(0))
+
+
+def zip_List(LinkedList1, LinkedList2):
+    newList = LinkedList()
+    current = LinkedList1.head
+
+    while current:
+        newList.append(current.value)
+        newList.append(0)
+        current = current.next
+
+    current = newList.head
+    counter = 0
+    current2 = LinkedList2.head
+
+    while current:
+        if  counter % 2 == 1:
+            current.value = current2.value
+            current = current.next
+            current2 = current.next
+            counter += 1
+
+    return newList
+
+
+ll1 = LinkedList()
+ll1.head = Node(1)
+ll1.head.next = Node(2)
+ll1.head.next.next= Node(3)
+
+ll2 = LinkedList()
+ll2.head = Node(4)
+ll2.head.next = Node(5)
+ll2.head.next = Node(6)
+
+ll_zip = zip_List(ll1,ll2)
+print(ll_zip.head.value)
+
+print('hello')
 
 
 
