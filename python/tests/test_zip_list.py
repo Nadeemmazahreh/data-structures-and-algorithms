@@ -4,8 +4,6 @@ class Node:
     def __init__(self,value):
         self.value = value
         self.next = None
-
-
 class LinkedList:
 
     def __init__(self, head = None):
@@ -99,10 +97,8 @@ class LinkedList:
 
         else:
             raise Exception('k is greater than the length of the linked list')
-
-
-
 def zip_list(ll1, ll2):
+
     curr1 = ll1.head
     curr2 = ll2.head
 
@@ -129,8 +125,32 @@ def zip_list(ll1, ll2):
     return z
 
 
+def test_happy_path():
+    ll1 = LinkedList()
+    ll1.append(1)
+    ll1.append(3)
+    ll1.append(5)
+    ll2 = LinkedList()
+    ll2.append(2)
+    ll2.append(4)
+    ll2.append(6)
+    actual=zip_list(ll1, ll2)
+    expected='(1)->(2)->(3)->(4)->(5)->(6)->None'
+
+    assert actual==expected
 
 
 
 
+def test_edge_case():
+    ll1 = LinkedList()
+    ll1.append(1)
+    ll1.append(3)
+    ll1.append(5)
+    ll2 = LinkedList()
+    ll2.append(2)
+    ll2.append(4)
+    actual=zip_list(ll1, ll2)
+    expected='(1)->(2)->(3)->(4)->(5)->None'
 
+    assert actual==expected
