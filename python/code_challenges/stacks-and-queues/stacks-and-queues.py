@@ -18,13 +18,13 @@ class Stack:
            self.top=self.top.next
            return popValue
         except:
-            return 'The Stack is empty'
+            return 'empty stack'
 
     def peek(self):
         try:
             return self.top.value
         except:
-            return 'The Stack is empty'
+            return 'empty stack'
 
     def isEmpty(self):
         return self.top==None
@@ -52,33 +52,14 @@ class Queue:
            self.front=self.front.next
            return dequeueValue
         except :
-           return 'The Queue is empty'
+           return 'empty queue'
 
     def peek(self):
         try:
            return self.front.value
 
         except :
-            return 'The Queue is empty'
+            return 'empty queue'
 
     def isEmpty(self):
         return self.front == None
-
-
-
-
-if __name__ == "__main__":
-
-    stack = Stack()
-    stack.push(3)
-    stack.push(-7)
-    stack.push('d')
-    print(stack.pop())
-
-    queue = Queue()
-    queue.enqueue(8)
-    queue.enqueue('hi')
-    queue.enqueue(-4)
-    queue.enqueue(6)
-    print(queue.peek()) 
-    # print(queue.front.value)
