@@ -96,3 +96,21 @@ string="Once upon a time, there was a brave princess who..."
 
 print(repeated_word(string))
 
+
+
+
+def repeated_letter(string=None):
+    if string == None :
+        return 'the string is empty'
+    hashtable = Hashtable(1024)
+
+    string = re.sub('\W+', '', string).lower().split()
+
+    for letter in string:
+
+        if hashtable.contains(letter):
+            return False
+        else:
+            hashtable.add(letter, True)
+
+    return True
